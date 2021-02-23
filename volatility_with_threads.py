@@ -35,10 +35,7 @@ class VolatilityParser(threading.Thread):
                 self.quantity = line[3]
                 if self.price > self.price_max:
                     self.price_max = self.price
-                if self.price_min:
-                    if self.price < self.price_min:
-                        self.price_min = self.price
-                else:
+                if self.price < self.price_min or not self.price_min:
                     self.price_min = self.price
 
     def volatility_calculation(self):
